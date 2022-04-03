@@ -1,0 +1,92 @@
+<div class="upload-video-metadata-container" fxLayout="row wrap" fxLayoutGap="90px">
+  <div fxFlex="30%">
+    <form>
+      <div fxLayout="column" fxLayoutGap="16px">
+        <div class="mat-title">Информация</div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Название</mat-label>
+            <input matInput placeholder="" [formControl]="titleFormControl" required>
+            <mat-error *ngIf="titleFormControl.hasError('required')">
+              У вашего видео должно быть название
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Описание</mat-label>
+            <textarea matInput placeholder="" [formControl]="descriptionFormControl"></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Теги</mat-label>
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let tag of tags" [selectable]="true"
+                        [removable]="true" (removed)="removeTag(tag)">
+                {{ tag }}
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="Введите название тега"
+                     [matChipInputFor]="chipList"
+                     (matChipInputTokenEnd)="addTag($event)">
+            </mat-chip-list>
+          </mat-form-field>
+          <br>
+          <label>
+            <i>Чтобы подтвердить ввод нажмите на Enter*</i>
+          </label>
+        </div>
+      </div>
+      <br>
+      <div fxLayout="column" fxLayoutGap="16px">
+        <div class="mat-title">Превью</div>
+        <div>
+          <label>
+            Превью должен привлекать внимание зрителей и отражать содержание видео.
+          </label>
+          <br>
+          <br>
+          <div>
+            <input type="file" (change)="onFileSelected($event)">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div fxLayout="column" fxLayoutGap="16px">
+        <div class="mat-title">Параметры доступа</div>
+        <div>
+          <label>
+            Выберите вариант доступа к видео: <strong>открытый</strong> или <strong>по ссылке</strong>.
+          </label>
+          <mat-radio-group class="example-radio-group" [formControl]="statusFormControl">
+            <mat-radio-button class="example-radio-button" value="PRIVATE">Доступ по ссылке</mat-radio-button>
+            <mat-radio-button class="example-radio-button" value="PUBLIC">Открытый доступ</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <br>
+      <button type="submit" mat-raised-button color="primary" (click)="uploadVideoMetadata()">
+        Сохранить
+      </button>
+    </form>
+    <div>&nbsp;</div>
+  </div>
+  <div fxFlex="30%">
+    <div class="mat-title">&nbsp;</div>
+    <app-video-player [videoUrl]="videoUrl"></app-video-player>
+    <mat-card>
+      <div>
+        Ссылка на видео:
+        <br>
+        <a href="{{ 'http://localhost:4200/' + videoId }}">{{ 'http://localhost:4200/' + videoId }}</a>
+      </div>
+      <br>
+      <div>
+        Название файла:
+        <br>
+        <strong>{{ videoTitle }}</strong>
+      </div>
+    </mat-card>
+  </div>
+</div>

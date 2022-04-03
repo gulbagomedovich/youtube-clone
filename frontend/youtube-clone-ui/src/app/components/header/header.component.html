@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a href="" class="mat-toolbar-row-start" [ngStyle]="{'text-decoration': 'none', 'color': 'inherit'}">
+      YouTube Clone
+    </a>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+            (click)="addVideo()">
+      <mat-icon>video_call</mat-icon>
+    </button>
+    <button *ngIf="isAuthenticated" mat-icon-button class="mat-toolbar-row-end"
+            aria-label="Example icon-button with share icon">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button *ngIf="!isAuthenticated" mat-raised-button (click)="login()">Войти</button>
+  </mat-toolbar-row>
+</mat-toolbar>

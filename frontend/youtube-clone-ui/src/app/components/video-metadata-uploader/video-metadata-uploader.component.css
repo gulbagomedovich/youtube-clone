@@ -1,0 +1,28 @@
+.upload-video-metadata-container {
+  margin-top: 45px;
+  display: flex;
+  justify-content: center;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+app-video-player {
+  display: flex;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+mat-card {
+  background: #F9F9F9;
+}

@@ -1,0 +1,9 @@
+<div class="center upload-video-container">
+  <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                 (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+      Перетащите файл с видео сюда или&nbsp;
+      <button type="button" (click)="openFileSelector()">Выберите файл</button>
+    </ng-template>
+  </ngx-file-drop>
+</div>

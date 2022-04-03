@@ -1,0 +1,18 @@
+.example-card {
+  max-width: 250px;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+mat-card-title {
+  width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+mat-card-title span {
+  font-size: medium;
+}

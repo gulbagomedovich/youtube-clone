@@ -1,0 +1,16 @@
+.video-metadata-container {
+  margin-top: 25px;
+  margin-left: 100px;
+}
+
+.like-dislike-section {
+  padding-right: 10px;
+}
+
+.thumbs-down {
+  padding-left: 15px;
+}
+
+.example-header-image {
+  background-size: cover;
+}

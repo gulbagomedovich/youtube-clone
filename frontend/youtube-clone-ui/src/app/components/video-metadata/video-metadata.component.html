@@ -1,0 +1,67 @@
+<div fxLayout="row">
+  <div fxFlex="55%" class="video-metadata-container">
+    <div fxLayout="column" fxLayoutGap="8px">
+      <app-video-player *ngIf="videoUrl" [videoUrl]="videoUrl"></app-video-player>
+      <div class="mat-title">{{ title }}</div>
+      <div fxLayout="row">
+        <div fxFlex="50%">
+          <span class="views-count">{{ viewsCount }} просмотров</span>
+          <span>&nbsp;&bull;&nbsp;</span>
+          <span class="video-upload-date">{{ videoUploadDate }}</span>
+        </div>
+        <div fxFlex="50%" fxLayoutAlign="end">
+          <span class="like-dislike-section">
+              <button mat-icon-button class="thumbs-up" (click)="like()">
+                <mat-icon>thumb_up_off_alt</mat-icon>
+                {{ likesCount }}
+              </button>
+              <button mat-icon-button class="thumbs-down" (click)="dislike()">
+                <mat-icon>thumb_down_off_alt</mat-icon>
+                {{ dislikesCount }}
+              </button>
+          </span>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <br>
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"
+               [ngStyle]="{'background-image': 'url(' + picture + ')'}">
+          </div>
+          <mat-card-title>{{ firstName + " " + lastName }}</mat-card-title>
+          <mat-card-subtitle>{{ subscribersCount }} подписчиков</mat-card-subtitle>
+          <div fxFlex></div>
+          <mat-card-actions>
+            <button *ngIf="!isSubscribed && userId != currentUserId"
+                    mat-raised-button color="warn" (click)="subscribe()">
+              Подписаться
+            </button>
+            <button *ngIf="isSubscribed" mat-raised-button color="accent" (click)="unsubscribe()">
+              Отписаться
+            </button>
+            <button *ngIf="!isSubscribed && userId == currentUserId"
+                    mat-raised-button color="primary" (click)="unsubscribe()">
+              Изменить
+            </button>
+          </mat-card-actions>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{ description }}
+          </p>
+          <mat-chip-list
+            cdkDropList
+            cdkDropListOrientation="horizontal">
+            <mat-chip
+              cdkDrag
+              *ngFor="let tag of tags">
+              {{ '#' + tag }}
+            </mat-chip>
+          </mat-chip-list>
+        </mat-card-content>
+      </mat-card>
+      <div>&nbsp;</div>
+    </div>
+  </div>
+</div>
