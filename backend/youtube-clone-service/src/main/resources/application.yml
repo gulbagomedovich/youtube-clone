@@ -1,1 +1,36 @@
+server:
+  error:
+    include-message: always
 
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: youtube-clone
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-umnfzopz.us.auth0.com/
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+    region:
+      static: us-east-1
+    stack:
+      auto: false
+
+youtube-clone-service:
+  # Имя корзины Amazon S3
+  bucket-name: gulbagomedovich-youtube-clone
+  auth0:
+    audience: http://localhost:8080
+    user-info-uri: https://dev-umnfzopz.us.auth0.com/userinfo
